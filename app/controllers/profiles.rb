@@ -8,7 +8,7 @@ get '/profile/:user_id/edit' do
   erb :edit_profile
 end
 
-get '/profile/:user_id/edit' do
+post '/profile/:user_id/edit' do
   @profile = Profile.where(user_id: params[:user_id])[0]
   @profile.update(params[:profile])
   redirect to "/profile/#{params[:user_id]}"
