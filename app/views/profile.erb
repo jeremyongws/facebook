@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Welcome to your very own Bukumuka profile!</h1>
+
+  <img src="http://2.bp.blogspot.com/-NA8B2txzxwI/T4u9Lluwc6I/AAAAAAAAAEc/8oJ47pPfLhE/s1600/MukaBuku+logo.jpg" alt="Smiley face" align="middle" width="500">
+  <br><a>Your Name : <%= @profile.name %></a>
+  <br><a>Your Age : <%= @profile.age %></a>
+  <br><a>Description : <%= @profile.description %></a>
+  <br>
+  <a href="/profile/<%= params[:user_id] %>/edit">Edit Your Profile</a>
+  <a href="/feed/<%= params[:user_id] %>">Check out your feed</a>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Edit your Bukumuka profile!</h1>
+
+  <img src="http://www.frissujsag.ro/wp-content/uploads/2015/01/kepnoszfu248.jpg" alt="Smiley face" align="middle" width="500">
+    <form action="/profile/<%=params[:user_id]%>/edit" method="post">
+    <input type="text" name="profile[name]" value=<%= @profile.name %>>
+    <br>
+    <input type="text" name="profile[age]" value=<%= @profile.age %>>
+    <br>
+    <input type="text" name="profile[description]" value="<%= @profile.description %>" >
+    <input type="submit" value="Submit">
+    </form>
+</div>

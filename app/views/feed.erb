@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Welcome to your Bukumuka feed!</h1>
+
+  <h3>How are you feeling today?<h3>
+  <form action="/<%= params[:user_id] %>/status/new" method="post">
+    <input type="text" name="status" value="Moody? Happy? Your friends would like to hear about you!">
+    <input type="submit" value="Post it!">
+  </form>
+</div>
+
+<div class="container">
+  <% if @status_objects.count == 0 %>
+  <div class="container">
+    <p> You have no friends, shame on you! </p>
+  </div>
+  <% else %>
+    <div class="container">
+    <% @status_objects.each do |status_objects| %>
+      <p>Status : <%= status_objects.status.gsub /#\w+/,'' %>
+      <% status_objects.tags.each do |tag| %>
+        <a href="/tag/<%= tag.id %>/statuses"><%= tag.tag %></a>
+      <% end %></p> <p><a href="/like/<%= status_objects.id %>">Like</a> Number of Likes : &nbsp; <%= status_objects.likes.count %> </p>
+      <a href="/<%= params[:user_id] %>/status/<%= status_objects.id %>/edit">Edit this status </a>
+      Posted by <a href="/profile/<%= status_objects.user_id %>"><%= status_objects.user.profile.name %></a>
+      <p>Existing comments</p>
+      <% status_objects.comments.each do |comment| %>
+        <p><%= comment.comment %><br><a href="/<%= status_objects.id %>/comment/<%= comment.id %>/edit">edit comment</a></p>
+      <% end %>
+        <p>Comment on this status
+        <form action="/<%= status_objects.id %>/comments/new" method="post">
+        <input type="text" name="comment">
+        <input type="submit" value="Submit">
+        </form></p>
+    <% end %>
+    </div>
+  <% end %>
+</div>

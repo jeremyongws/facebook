@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Edit your comment below</h1>
+    <form action="/<%= @status.id %>/comment/<%= @comment.id %>/edit" method="post">
+    <input name="_method" type="hidden" value="put">
+    <input type="text" name="comment" value=<%= @comment.comment %>>
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+
+    <form action="/comment/<%= @comment.id %>/edit" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <input type="submit" value="Delete this comment">
+    </form>
+</div>

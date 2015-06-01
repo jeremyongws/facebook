@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Hi <%= @user.profile.name %>, Edit your status below</h1>
+    <form action="/<%=params[:user_id]%>/status/<%=params[:status_id]%>/edit" method="post">
+    <input type="text" name="profile[status]" value=<%= @status.status %><% @status.tags.each do |tag| %>
+      <%= tag.tag %>
+      <% end %>
+    <br>>
+    <input type="submit" value="Submit">
+    </form>
+</div>

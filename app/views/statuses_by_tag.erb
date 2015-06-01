@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Statuses with <%= @tag.tag %> tag</h1>
+</div>
+
+<div class="container">
+    <% @statuses.each do |status| %>
+      <p><%= status.status.gsub /#\w+/,'' %>
+      <% status.tags.each do |tag| %>
+      <a href="/tag/<%= tag.id %>/statuses"><%= tag.tag %></a></p>
+      <% end %><a href="/like/<%= status.id %>">Like</a>
+      <p> Number of Likes : &nbsp; <%= status.likes.count %> </p>
+      <a href="/<%= status.user.id %>/status/<%= status.id %>/edit">Edit this status </a>
+      Posted by <a href="/profile/<%= status.user_id %>"><%= status.user.profile.name %></a>
+      <p>Comment on this status
+      <form action="/<%= status.id %>/comments/new" method="post">
+       <% byebug %>
+      <input type="text" name="comment">
+      <input type="submit" value="Submit">
+      </form></p>
+    <% end %>
+</div>
